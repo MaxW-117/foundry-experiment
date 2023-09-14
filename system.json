@@ -1,0 +1,14 @@
+{
+  "name": "mytt",
+  "title": "My Tabletop Experiment",
+  "description": "A custom system I'm playing with",
+  "version": "0.0.1",
+  "author": "Maxiums",
+  "scripts": [],
+  "socket": true,
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "attributes.hp",
+  "secondaryTokenAttribute": null,
+  "minimumCoreVersion": "11.0"
+}
