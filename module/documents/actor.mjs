@@ -1,3 +1,5 @@
+import { Character } from "./character.mjs";
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -30,23 +32,13 @@ export class SystemActor extends Actor {
    */
   prepareDerivedData() {
     const actorData = this.data;
-    const data = actorData.data;
     const flags = actorData.flags.mytt || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
+    Character.prepareDerivedData(actorData);
   }
 
-  /**
-   * Prepare Character type specific data
-   */
-  _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
-
-    // Make modifications to data here. For example:
-    const data = actorData.data;
-  }
 
   /**
    * Override getRollData() that's supplied to rolls.
@@ -55,21 +47,8 @@ export class SystemActor extends Actor {
     const data = super.getRollData();
 
     // Prepare character roll data.
-    this._getCharacterRollData(data);
+    Character.prepareRollData(data)
 
     return data;
   }
-
-  /**
-   * Prepare character roll data.
-   */
-  _getCharacterRollData(data) {
-    if (this.data.type !== 'character') return;
-
-    // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
-    }
-  }
-
 }
