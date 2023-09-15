@@ -224,6 +224,13 @@
 }
 
 /* Styles limited to mytt sheets */
+.mytt {
+  /* ----------------------------------------- */
+  /*  Items Lists                              */
+  /* ----------------------------------------- */
+  /* Example style for MySystem (can be removed if not needed) */
+}
+
 .mytt .item-form {
   font-family: "Roboto", sans-serif;
 }
