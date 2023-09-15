@@ -1,45 +1,143 @@
 {
   "Actor": {
-    "types": ["character"],
+    "types": [
+      "character",
+      "npc",
+      "creature"
+    ],
     "templates": {
-      "base": {
+      "resourceful": {
         "health": {
-          "value": 10,
+          "value": 0,
           "min": 0,
-          "max": 10
+          "max": 0
         },
-        "power": {
-          "value": 5,
+        "mana": {
+          "value": 0,
           "min": 0,
-          "max": 5
+          "max": 0
         },
-        "biography": ""
+        "stamina": {
+          "value": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "statful": {
+        "stats": {
+          "spi": 1,
+          "wis": 1,
+          "int": 1,
+          "per": 1,
+          "cha": 1,
+          "vit": 1,
+          "end": 1,
+          "str": 1,
+          "dex": 1,
+          "agi": 1,
+          "luc": 1
+        }
+      },
+      "classful": {
+        "classes": {}
+      },
+      "descriptive": {
+        "description": "",
+        "dmNotes": ""
+      },
+      "simpleLeveled": {
+        "level": 1,
+        "statsPerLevel": 5
       }
     },
     "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      }
+      "templates": [
+        "resourceful",
+        "statful",
+        "classful",
+        "descriptive"
+      ]
+    },
+    "npc": {
+      "templates": [
+        "resourceful",
+        "statful",
+        "classful",
+        "descriptive"
+      ]
+    },
+    "creature": {
+      "templates": [
+        "resourceful",
+        "statful",
+        "simpleLeveled",
+        "descriptive"
+      ]
     }
   },
   "Item": {
-    "types": ["item", "feature"],
+    "types": [
+      "weapon",
+      "skill",
+      "class"
+    ],
     "templates": {
       "base": {
         "description": ""
+      },
+      "statful": {
+        "stats": {
+          "spi": 0,
+          "wis": 0,
+          "int": 0,
+          "per": 0,
+          "cha": 0,
+          "vit": 0,
+          "end": 0,
+          "str": 0,
+          "dex": 0,
+          "agi": 0,
+          "luc": 0,
+          "free": 0
+        }
+      },
+      "physical": {
+        "quantity": 1,
+        "weight": 0,
+        "durability": 1,
+        "hp": 1,
+        "material": "wood"
+      },
+      "weapon": {
+        "category": "simple",
+        "group": "sword",
+        "range": 0,
+        "attackStat": "str",
+        "dmgStat": "str",
+        "attackBonus": 0,
+        "dmgBonus": 0,
+        "baseDmg": "1d4",
+        "minStat": 0,
+        "maxStat": 0
+      },
+      "prerequisites": {
+        "prerequisites": []
       }
     },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    "weapon": {
+      "templates": [
+        "base", "physical", "weapon"
+      ]
     },
-    "feature": {
-      "templates": ["base"]
+    "skill": {
+      "templates": [
+        "base", "prerequisites"
+      ]
+    },
+    "class": {
+      "templates": [
+        "base", "statful", "prerequisites"
+      ]
     }
   }
 }
