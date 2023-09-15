@@ -1,9 +1,9 @@
 // Import document classes.
-import { MySystemActor } from "./documents/actor.mjs";
-import { MySystemItem } from "./documents/item.mjs";
+import { SystemActor } from "./documents/actor.mjs";
+import { SystemItem } from "./documents/item.mjs";
 // Import sheet classes.
-import { MySystemActorSheet } from "./sheets/actor-sheet.mjs";
-import { MySystemItemSheet } from "./sheets/item-sheet.mjs";
+import { SystemActorSheet } from "./sheets/actor-sheet.mjs";
+import { SystemItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { MYTT } from "./helpers/config.mjs";
@@ -17,8 +17,8 @@ Hooks.once('init', async function() {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.mytt = {
-    MySystemActor,
-    MySystemItem,
+    SystemActor,
+    SystemItem,
     rollItemMacro
   };
 
@@ -35,14 +35,14 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = MySystemActor;
-  CONFIG.Item.documentClass = MySystemItem;
+  CONFIG.Actor.documentClass = SystemActor;
+  CONFIG.Item.documentClass = SystemItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("mytt", MySystemActorSheet, { makeDefault: true });
+  Actors.registerSheet("mytt", SystemActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("mytt", MySystemItemSheet, { makeDefault: true });
+  Items.registerSheet("mytt", SystemItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

@@ -4,7 +4,7 @@ import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/ef
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class MySystemActorSheet extends ActorSheet {
+export class SystemActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {

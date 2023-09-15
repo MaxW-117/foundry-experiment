@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class MySystemItem extends Item {
+export class SystemItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
