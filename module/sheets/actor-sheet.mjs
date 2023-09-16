@@ -1,3 +1,4 @@
+import { Character } from "../documents/character.mjs";
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 
 /**
@@ -40,10 +41,7 @@ export class SystemActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
+    Character.prepareSheetData(context)
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
@@ -61,37 +59,12 @@ export class SystemActorSheet extends ActorSheet {
    *
    * @return {undefined}
    */
-  _prepareCharacterData(context) {
-  }
-
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
   _prepareItems(context) {
-    // Initialize containers.
-    const gear = [];
-    const features = [];
-
-    // Iterate through items, allocating to containers
     for (let i of context.items) {
-      i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === 'item') {
-        gear.push(i);
-      }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
-      }
+      if (!context[i.type])
+        context[i.type] = []
+      context[i.type].push(i)
     }
-
-    // Assign and return
-    context.gear = gear;
-    context.features = features;
    }
 
   /* -------------------------------------------- */

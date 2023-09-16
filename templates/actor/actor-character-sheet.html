@@ -15,20 +15,12 @@
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
           <label for="data.health.value" class="resource-label">Health</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
-          </div>
+          <span title="{{data.health.value}} / {{data.health.max}}"> {{data.health.percentage}} % </span>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.power.value" class="resource-label">Power</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
-          </div>
+          <span> {{data.health.value}} / {{data.health.value}}</span>
+          <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
         </div>
 
         <div class="resource flex-group-center">

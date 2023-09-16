@@ -132,7 +132,9 @@
     "skill": {
       "templates": [
         "base", "prerequisites"
-      ]
+      ],
+      "group":"",
+      "category":""
     },
     "class": {
       "templates": [
