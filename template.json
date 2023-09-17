@@ -79,6 +79,7 @@
     "types": [
       "weapon",
       "skill",
+      "ancestry",
       "class"
     ],
     "templates": {
@@ -139,6 +140,11 @@
     "class": {
       "templates": [
         "base", "statful", "prerequisites"
+      ]
+    },
+    "ancestry": {
+      "templates": [
+        "base", "statful"
       ]
     }
   }
