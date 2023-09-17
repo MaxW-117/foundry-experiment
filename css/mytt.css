@@ -306,6 +306,23 @@
   font-weight: bold;
 }
 
+.mytt .resource-display {
+  padding: 3px;
+  padding-right: 30px;
+  position: relative;
+  height: auto;
+  background: -webkit-gradient(linear, left top, right top, from(var(--color)), color-stop(0%, #ffffff00));
+  background: linear-gradient(90deg, var(--color) calc(var(--percent) * 1%), #ffffff00 0%);
+  border: grey 1px solid;
+  border-radius: 3px;
+}
+
+.mytt .resource-display input {
+  max-width: 50px;
+  border: none;
+  background: rgba(255, 255, 255, 0.199);
+}
+
 .mytt .items-header {
   height: 28px;
   margin: 2px 0;

@@ -1,3 +1,39 @@
 .resource-label {
   font-weight: bold;
 }
+
+.resource-display {
+  padding: 3px;
+  padding-right: 30px;
+  position: relative;
+  height: auto;
+  background: linear-gradient(90deg, var(--color) calc(var(--percent) * 1%), #ffffff00 0%);
+  border: grey 1px solid;
+  border-radius: 3px;
+  input {
+    max-width: 50px;
+    border: none;
+    background: rgba(255, 255, 255, 0.199);
+  }
+}
+
+// .resource-bar {
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   width:  calc(var(--percent) * 1%);
+//   height: 100%;
+//   background-color: red;
+//   z-index: 1;
+// }
+
+// .resource.bar::after {
+//   content: attr(data-content);
+//   position: absolute;
+//   display: flex;
+//   justify-content: end;
+//   width: 50%;
+//   // width: calc(var(--percent) * 1%);
+//   height: 100%;
+//   background: #2486ff;
+// }

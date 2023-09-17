@@ -15,20 +15,31 @@
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
           <label for="data.health.value" class="resource-label">Health</label>
-          <span title="{{data.health.value}} / {{data.health.max}}"> {{data.health.percentage}} % </span>
-        </div>
-
-        <div class="resource flex-group-center">
-          <span> {{data.health.value}} / {{data.health.value}}</span>
-          <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label">Level</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.level.value" value="{{data.attributes.level.value}}" data-dtype="Number"/>
+          <div class="resource-display" style="--percent: {{data.health.percentage}}; --color: #9e0404">
+            <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+            <span> / {{data.health.max}}</span>
           </div>
         </div>
+
+        {{#if data.showStamina }}
+        <div class="resource flex-group-center">
+          <label for="data.stamina.value" class="resource-label">Stamina</label>
+          <div class="resource-display" style="--percent: {{data.stamina.percentage}}; --color: green">
+            <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
+            <span> / {{data.stamina.max}}</span>
+          </div>
+        </div>
+        {{/if}}
+
+        {{#if data.showMana }}
+        <div class="resource flex-group-center">
+          <label for="data.mana.value" class="resource-label">Mana</label>
+          <div class="resource-display" style="--percent: {{data.mana.percentage}}; --color: blue">
+            <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number"/>
+            <span> / {{data.mana.max}}</span>
+          </div>
+        </div>
+        {{/if}}
 
       </div>
     </div>
