@@ -7,7 +7,8 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/mytt/templates/actor/character-parts/stats.html",
+    "systems/mytt/templates/actor/character-parts/stats.hbs",
+    "systems/mytt/templates/actor/character-parts/ancestry.hbs",
     "systems/mytt/templates/actor/parts/actor-features.html",
     "systems/mytt/templates/actor/parts/actor-items.html",
     "systems/mytt/templates/actor/parts/actor-effects.html",
