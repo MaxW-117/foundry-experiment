@@ -1,28 +1,24 @@
 export const MYTT = {};
 
 // Define constants here, such as:
-MYTT.foobar = {
-  'bas': 'MYTT.bas',
-  'bar': 'MYTT.bar'
-};
 
 MYTT.stats = {
   "spi": {
     "name":"Spirit",
     "description":""
   },
-  "wis": {
-    "name":"Wisdom",
-    "description":""
-  },
   "int": {
-    "name":"Intelligence",
+    "name":"Intuition",
     "description":""
   },
-  "per": {
-    "name":"Perception",
+  "kno": {
+    "name":"Knowledge",
     "description":""
   },
+  // "per": {
+  //   "name":"Perception",
+  //   "description":""
+  // },
   "cha": {
     "name":"Charisma",
     "description":""
@@ -45,6 +41,10 @@ MYTT.stats = {
   },
   "agi": {
     "name":"Agility",
+    "description":""
+  },
+  "luc": {
+    "name":"Luck",
     "description":""
   },
 };

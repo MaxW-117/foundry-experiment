@@ -25,17 +25,17 @@
       },
       "statful": {
         "stats": {
-          "spi": 1,
-          "wis": 1,
-          "int": 1,
-          "per": 1,
-          "cha": 1,
-          "vit": 1,
-          "end": 1,
-          "str": 1,
-          "dex": 1,
-          "agi": 1,
-          "luc": 1
+          "spi": 0,
+          "int": 0,
+          "kno": 0,
+          "per": 0,
+          "cha": 0,
+          "vit": 0,
+          "end": 0,
+          "str": 0,
+          "dex": 0,
+          "agi": 0,
+          "luc": 0
         }
       },
       "classful": {
@@ -89,8 +89,8 @@
       "statful": {
         "stats": {
           "spi": 0,
-          "wis": 0,
           "int": 0,
+          "kno": 0,
           "per": 0,
           "cha": 0,
           "vit": 0,

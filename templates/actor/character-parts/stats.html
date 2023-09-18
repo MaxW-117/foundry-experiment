@@ -1,3 +1,23 @@
 <div>
-  <p>Stat block</p>
+  {{#if data.freeStatPointsAvailable }}
+    <p>Free points available! ({{data.freeStatPoints}})</p>
+  {{/if}}
+  <table class="statTable">
+    <tr>
+      <th>Attributes</th>
+      <th>Total</th>
+      {{#if data.freeStatPointsAvailable }}
+        <th>Add</th>
+      {{/if}}
+    </tr>
+    {{#each data.displayStats as |stat|}}
+      <tr>
+        <td title="{{stat.description}}">{{stat.name}}</td>
+        <td title="{{stat.breakdown}}">{{stat.value}}</td>
+        {{#if stat.increasable }}
+          <td><a title="Add free point"><i class="fas fa-plus"></i></a></td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </table>
 </div>
