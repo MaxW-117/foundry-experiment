@@ -1,6 +1,7 @@
 export class CharacterSheet {
 
     static prepareSheetData(context) {
+        if (context.actor.type !== 'character') return;
         this.sheetCharacterData(context);
         this.sheetItemData(context);
     }

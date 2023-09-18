@@ -1,3 +1,5 @@
+import { AncestrySheet } from "../documents/AncestrySheet.mjs";
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -22,18 +24,30 @@ export class SystemItemSheet extends ItemSheet {
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.data.type}-sheet.html`;
+    return `${path}/${this.item.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
 
   /** @override */
   getData() {
+    Handlebars.registerHelper("debug", function(optionalValue) {
+      console.log("Current Context");
+      console.log("====================");
+      console.log(this);
+      if (optionalValue) {
+          console.log("Value");
+          console.log("====================");
+          console.log(optionalValue);
+      }
+    });
     // Retrieve base data structure.
     const context = super.getData();
 
     // Use a safe clone of the item data for further operations.
     const itemData = context.item.data;
+
+    AncestrySheet.prepareSheetData(context);
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
