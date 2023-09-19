@@ -21,27 +21,27 @@ export class CharacterSheet {
 
         data.freeStatPoints = 0;
         data.freeStatPointsAvailable = data.freeStatPoints > 0;
+
         data.displayStats = Object.keys(CONFIG.MYTT.stats)
             .filter(k => k !== 'luc')
             .map((key) => {
                 return {
+                    ...data.stats[key],
                     key: key,
-                    name: CONFIG.MYTT.stats[key].name,
-                    description: CONFIG.MYTT.stats[key].description,
-                    breakdown: `Some breakdown here`,
-                    value: data[key],
-                    increasable: data.freeStatPointsAvailable
+                    breakdownText: data.stats[key].breakdown
+                      .map((b) => `${b.source}: ${b.value}`)
+                      .join(', '),
                 };
             });
     }
 
     static sheetItemData(context) {
-        const data = context.data;
-        for (let i of context.items) {
-            if (!data[i.type])
-            data[i.type] = []
-            data[i.type].push(i)
-        }
+        // const data = context.data;
+        // for (let i of context.items) {
+        //     if (!data[i.type])
+        //     data[i.type] = []
+        //     data[i.type].push(i)
+        // }
     }
 
     static registerHooks(html) {
@@ -101,7 +101,6 @@ export class CharacterSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const itemId = element.closest('.item').dataset.itemId;
-        console.error("getOwnedItem?", this.actor)
         const item = this.actor.items.get(itemId);
         const field = element.dataset.field;
         

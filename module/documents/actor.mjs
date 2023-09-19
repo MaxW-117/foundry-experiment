@@ -19,6 +19,7 @@ export class SystemActor extends Actor {
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
+    Character.prepareBaseData(this.data);
   }
 
   /**
@@ -36,7 +37,7 @@ export class SystemActor extends Actor {
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    Character.prepareDerivedData(actorData);
+    Character.prepareDerivedData(this.data);
   }
 
 

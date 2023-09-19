@@ -13,7 +13,7 @@
     {{#each data.displayStats as |stat|}}
       <tr>
         <td title="{{stat.description}}">{{stat.name}}</td>
-        <td title="{{stat.breakdown}}">{{stat.value}}</td>
+        <td title="{{stat.breakdownText}}">{{stat.value}}</td>
         {{#if stat.increasable }}
           <td><a title="Add free point"><i class="fas fa-plus"></i></a></td>
         {{/if}}

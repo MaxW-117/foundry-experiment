@@ -3,12 +3,12 @@ export class ActorBase {
 
   // Data modifications in this step occur before processing embedded
   // documents or derived data.
-  static prepareBaseData(actorData) {
-    if (actorData.type !== this.type) return;
-    this.baseData(actorData)
+  static prepareBaseData(context) {
+    if (context.type !== this.type) return;
+    this.baseData(context)
   }
 
-  static baseData(actorData) {
+  static baseData(context) {
     
   }
 
@@ -20,12 +20,12 @@ export class ActorBase {
    * available both inside and outside of character sheets (such as if an actor
    * is queried and has a roll executed directly from it).
   */
-  static prepareDerivedData(actorData) {
-    if (actorData.type !== this.type) return;
-    this.derivedData(actorData)
+  static prepareDerivedData(context) {
+    if (context.type !== this.type) return;
+    this.derivedData(context)
   }
 
-  static derivedData(actorData) {
+  static derivedData(context) {
    
   }
 

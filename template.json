@@ -8,8 +8,7 @@
     "templates": {
       "base" : {
         "description": "",
-        "dmNotes": "",
-        "ancestries": { }
+        "dmNotes": ""
       },
       "resourceful": {
         "health": {
@@ -29,7 +28,7 @@
         }
       },
       "statful": {
-        "stats": {
+        "assignedStats": {
           "spi": 0,
           "int": 0,
           "kno": 0,
@@ -55,7 +54,7 @@
         "resourceful",
         "statful",
         "classful",
-        "descriptive"
+        "base"
       ]
     },
     "npc": {
@@ -63,7 +62,7 @@
         "resourceful",
         "statful",
         "classful",
-        "descriptive"
+        "base"
       ]
     },
     "creature": {
@@ -71,7 +70,7 @@
         "resourceful",
         "statful",
         "simpleLeveled",
-        "descriptive"
+        "base"
       ]
     }
   },
