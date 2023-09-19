@@ -36,7 +36,12 @@ export class CharacterSheet {
     }
 
     static sheetItemData(context) {
-
+        const data = context.data;
+        for (let i of context.items) {
+            if (!data[i.type])
+            data[i.type] = []
+            data[i.type].push(i)
+        }
     }
 
     static registerHooks(html) {
@@ -46,8 +51,6 @@ export class CharacterSheet {
             const item = context.actor.items.get(li.data("itemId"));
             item.sheet.render(true);
         });
-
-        console.log('is editable? ', this.isEditable)
 
         // -------------------------------------------------------------
         // Everything below here is only needed if the sheet is editable
@@ -63,6 +66,8 @@ export class CharacterSheet {
             item.delete();
             li.slideUp(200, () => this.render(false));
         });
+
+        html.find('.inline-edit').change(CharacterSheet._onItemEdit.bind(this));
     }
 
     /**
@@ -90,5 +95,16 @@ export class CharacterSheet {
 
         // Finally, create the item!
         return await Item.create(itemData, { parent: this.actor });
+    }
+
+    static async _onItemEdit(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const itemId = element.closest('.item').dataset.itemId;
+        console.error("getOwnedItem?", this.actor)
+        const item = this.actor.items.get(itemId);
+        const field = element.dataset.field;
+        
+        return item.update({ [field]: element.value })
     }
 }

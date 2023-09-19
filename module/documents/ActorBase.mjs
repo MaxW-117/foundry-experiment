@@ -1,6 +1,16 @@
 export class ActorBase {
   static type = 'actor';
 
+  // Data modifications in this step occur before processing embedded
+  // documents or derived data.
+  static prepareBaseData(actorData) {
+    if (actorData.type !== this.type) return;
+    this.baseData(actorData)
+  }
+
+  static baseData(actorData) {
+    
+  }
 
   /**
    * Augment the basic actor data with additional dynamic data. Typically,
@@ -19,15 +29,6 @@ export class ActorBase {
    
   }
 
-  // static prepareCharacterData(actorData) {
-  //   if (actorData.type !== this.type) return;
-  //   this.characterData(actorData);
-  // }
-
-  // static characterData(actorData) {
-
-  // }
-
   /**
    * Override getRollData() that's supplied to rolls.
   */
@@ -37,19 +38,6 @@ export class ActorBase {
   }
 
   static rollData(actorData) {
-
-  }
-
-  // Retrieve the data structure from the base sheet. You can inspect or log
-  // the context variable to see the structure, but some key properties for
-  // sheets are the actor object, the data object, whether or not it's
-  // editable, the items array, and the effects array.
-  static prepareSheetData(context) {
-    if (context.actor.type !== this.type) return;
-    this.sheetData(context);
-  }
-
-  static sheetData(context) {
 
   }
 }

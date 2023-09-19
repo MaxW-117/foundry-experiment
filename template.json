@@ -6,6 +6,11 @@
       "creature"
     ],
     "templates": {
+      "base" : {
+        "description": "",
+        "dmNotes": "",
+        "ancestries": { }
+      },
       "resourceful": {
         "health": {
           "value": 0,
@@ -39,10 +44,6 @@
       },
       "classful": {
         "classes": {}
-      },
-      "descriptive": {
-        "description": "",
-        "dmNotes": ""
       },
       "simpleLeveled": {
         "level": 1,
@@ -138,12 +139,14 @@
     "class": {
       "templates": [
         "base", "statful", "prerequisites"
-      ]
+      ],
+      "level":1
     },
     "ancestry": {
       "templates": [
         "base", "statful"
-      ]
+      ],
+      "level":1
     }
   }
 }

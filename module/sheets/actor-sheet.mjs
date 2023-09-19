@@ -33,6 +33,17 @@ export class SystemActorSheet extends ActorSheet {
     // editable, the items array, and the effects array.
     const context = super.getData();
 
+    Handlebars.registerHelper("debug", function(optionalValue) {
+      console.log("Current Context");
+      console.log("====================");
+      console.log(this);
+      if (optionalValue) {
+          console.log("Value");
+          console.log("====================");
+          console.log(optionalValue);
+      }
+    });
+
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.data.toObject(false);
 
@@ -51,21 +62,6 @@ export class SystemActorSheet extends ActorSheet {
 
     return context;
   }
-
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareItems(context) {
-    for (let i of context.items) {
-      if (!context[i.type])
-        context[i.type] = []
-      context[i.type].push(i)
-    }
-   }
 
   /* -------------------------------------------- */
 
