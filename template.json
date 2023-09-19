@@ -28,7 +28,6 @@
           "spi": 0,
           "int": 0,
           "kno": 0,
-          "per": 0,
           "cha": 0,
           "vit": 0,
           "end": 0,
@@ -91,16 +90,15 @@
           "spi": 0,
           "int": 0,
           "kno": 0,
-          "per": 0,
           "cha": 0,
           "vit": 0,
           "end": 0,
           "str": 0,
           "dex": 0,
           "agi": 0,
-          "luc": 0,
-          "free": 0
-        }
+          "luc": 0
+        },
+        "freeStats": 0
       },
       "physical": {
         "quantity": 1,

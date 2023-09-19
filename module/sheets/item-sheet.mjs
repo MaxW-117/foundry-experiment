@@ -11,7 +11,7 @@ export class SystemItemSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["mytt", "sheet", "item"],
       width: 520,
-      height: 480,
+      height: 580,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
@@ -40,6 +40,10 @@ export class SystemItemSheet extends ItemSheet {
           console.log("====================");
           console.log(optionalValue);
       }
+    });
+
+    Handlebars.registerHelper("findAttribute", function(attKey, options) {
+      return options.fn({ attribute: CONFIG.MYTT.stats[attKey] })
     });
     // Retrieve base data structure.
     const context = super.getData();

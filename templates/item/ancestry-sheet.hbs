@@ -12,12 +12,18 @@
                     <th>Attribute</th>
                     <th>#/level</th>
                 </tr>
-                {{#each item.displayStats as |stat|}}
+                {{#each data.stats }}
                 <tr>
-                    <td title="{{stat.description}}">{{stat.name}}</td>
-                    <td><input type="number" name="item.stats.{{stat.key}}" value="{{stat.value}}" data-dtype="Number"/></td>
+                    {{#findAttribute @key }}
+                    <td title="{{attribute.description}}">{{attribute.name}}</td>
+                    {{/findAttribute }}
+                    <td><input type="number" name="data.stats.{{@key}}" value="{{this}}" data-dtype="Number"/></td>
                 </tr>
                 {{/each}}
+                <tr>
+                    <td title="Freely Allocated Points">Free</td>
+                    <td><input type="number" name="data.freeStats" value="{{data.freeStats}}" data-dtype="Number"/></td>
+                </tr>
             </table>
         </aside>
 
