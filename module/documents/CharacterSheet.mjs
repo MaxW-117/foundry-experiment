@@ -19,8 +19,7 @@ export class CharacterSheet {
         data.stamina.max = Math.max(1, data.stamina.max)
         data.stamina.percentage = Math.floor(10000 * data.stamina.value / data.stamina.max) / 100
 
-        data.freeStatPoints = 0;
-        data.freeStatPointsAvailable = data.freeStatPoints > 0;
+        data.freeStatPointsAvailable = data.freeStatPoints.unallocated > 0;
 
         data.displayStats = Object.keys(CONFIG.MYTT.stats)
             .filter(k => k !== 'luc')
@@ -68,6 +67,8 @@ export class CharacterSheet {
         });
 
         html.find('.inline-edit').change(CharacterSheet._onItemEdit.bind(this));
+
+        html.find('.stat-add').click(CharacterSheet._onStatAdd.bind(this))
     }
 
     /**
@@ -105,5 +106,12 @@ export class CharacterSheet {
         const field = element.dataset.field;
         
         return item.update({ [field]: element.value })
+    }
+
+    static async _onStatAdd(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const stat = element.closest('.stat-row').dataset.stat;
+        this.actor.system.assignedStats[stat] = this.actor.system.assignedStats[stat] + 1;
     }
 }

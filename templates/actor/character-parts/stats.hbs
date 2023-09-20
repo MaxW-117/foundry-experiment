@@ -1,6 +1,6 @@
 <div>
   {{#if data.freeStatPointsAvailable }}
-    <p>Free points available! ({{data.freeStatPoints}})</p>
+    <p>Free points available! ({{data.freeStatPoints.unallocated}})</p>
   {{/if}}
   <table class="statTable">
     <tr>
@@ -11,11 +11,13 @@
       {{/if}}
     </tr>
     {{#each data.displayStats as |stat|}}
-      <tr>
+      <tr class="stat-row" data-stat="{{stat.key}}">
         <td title="{{stat.description}}">{{stat.name}}</td>
         <td title="{{stat.breakdownText}}">{{stat.value}}</td>
-        {{#if stat.increasable }}
-          <td><a title="Add free point"><i class="fas fa-plus"></i></a></td>
+        {{#if ../data.freeStatPointsAvailable }}
+          <td>
+            <a class="item-control stat-add" title="Add free point"><i class="fas fa-plus"></i></a>
+          </td>
         {{/if}}
       </tr>
     {{/each}}
