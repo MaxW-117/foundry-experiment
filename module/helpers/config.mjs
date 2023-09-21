@@ -48,3 +48,7 @@ MYTT.stats = {
     "description":""
   },
 };
+
+MYTT.templates = {
+  "statRollCard": 'systems/mytt/templates/cards/stat-roll.hbs',
+};

@@ -25,6 +25,7 @@ export class Character extends ActorBase {
         Character.setupStats(actorData);
         Character.deriveAncestries(actorData);
         Character.deriveStats(actorData);
+        Character.deriveResources(actorData);
 
     }
 
@@ -67,6 +68,12 @@ export class Character extends ActorBase {
             actorData.freeStatPoints.total += ancestryData.level * ancestryData.freeStats
         })
         actorData.freeStatPoints.unallocated = actorData.freeStatPoints.total - actorData.freeStatPoints.used;
+    }
+
+    static deriveResources(actorData) {
+        actorData.health.max = actorData.stats.vit.value * 3;
+        actorData.mana.max = actorData.stats.kno.value * 4;
+        actorData.stamina.max = actorData.stats.end.value * 0.5;
     }
 
     /** @override */

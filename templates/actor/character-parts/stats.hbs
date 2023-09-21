@@ -12,7 +12,12 @@
     </tr>
     {{#each data.displayStats as |stat|}}
       <tr class="stat-row" data-stat="{{stat.key}}">
-        <td title="{{stat.description}}">{{stat.name}}</td>
+        <td title="{{stat.description}}">
+          <a class="rollable stat-roll" data-roll-type="stat">
+            <img src="{{stat.img}}" title="{{stat.name}}" width="24" height="24"/>
+            <span>{{stat.name}}</span>
+          </a>
+        </td>
         <td title="{{stat.breakdownText}}">{{stat.value}}</td>
         {{#if ../data.freeStatPointsAvailable }}
           <td>

@@ -69,6 +69,8 @@ export class CharacterSheet {
         html.find('.inline-edit').change(CharacterSheet._onItemEdit.bind(this));
 
         html.find('.stat-add').click(CharacterSheet._onStatAdd.bind(this))
+
+        html.find('.rollable.stat-roll').click(CharacterSheet._onStatRoll.bind(this))
     }
 
     /**
@@ -112,6 +114,21 @@ export class CharacterSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const stat = element.closest('.stat-row').dataset.stat;
-        this.actor.system.assignedStats[stat] = this.actor.system.assignedStats[stat] + 1;
+        this.actor.update({["data.assignedStats."+stat]: this.actor.system.assignedStats[stat] + 1})
+    }
+
+    static async _onStatRoll(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const stat = element.closest('.stat-row').dataset.stat;
+        const cardData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            owner: this.actor.id,
+            stat: CONFIG.MYTT.stats[stat],
+        }
+        roll = new Roll(`1d20 * (1 + (@stats.${stat})/10)`).roll().toMessage(cardData);
+        cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
+        return ChatMessage.create(cardData);
     }
 }
