@@ -1,4 +1,4 @@
-import { CharacterSheet } from "../documents/CharacterSheet.mjs";
+import { CharacterSheet } from "./CharacterSheet.mjs";
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 
 /**

@@ -15,7 +15,7 @@ export class CharacterSheet {
         data.mana.max = Math.max(1, data.mana.max)
         data.mana.percentage = Math.floor(10000 * data.mana.value / data.mana.max) / 100
 
-        data.showStamina = data.stamina.max > 10
+        data.showStamina = data.stamina.max > 0
         data.stamina.max = Math.max(1, data.stamina.max)
         data.stamina.percentage = Math.floor(10000 * data.stamina.value / data.stamina.max) / 100
 
@@ -127,7 +127,9 @@ export class CharacterSheet {
             owner: this.actor.id,
             stat: CONFIG.MYTT.stats[stat],
         }
-        roll = new Roll(`1d20 * (1 + (@stats.${stat})/10)`).roll().toMessage(cardData);
+        const roll = new Roll(`1d20 * (1 + (@stats.${stat}.value)/10)`, this.actor.getRollData())
+        await roll.evaluate();
+        cardData.roll = roll;
         cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
         return ChatMessage.create(cardData);
     }

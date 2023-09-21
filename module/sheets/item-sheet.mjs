@@ -1,4 +1,4 @@
-import { AncestrySheet } from "../documents/AncestrySheet.mjs";
+import { AncestrySheet } from "./AncestrySheet.mjs";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
