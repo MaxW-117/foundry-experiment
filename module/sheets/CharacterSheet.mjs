@@ -127,7 +127,7 @@ export class CharacterSheet {
             owner: this.actor.id,
             stat: CONFIG.MYTT.stats[stat],
         }
-        const roll = new Roll(`1d20 * (1 + (@stats.${stat}.value)/10)`, this.actor.getRollData())
+        const roll = new Roll(`floor(1d20 * (1 + (@stats.${stat}.value)/10))`, this.actor.getRollData())
         await roll.evaluate();
         cardData.roll = roll;
         cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);

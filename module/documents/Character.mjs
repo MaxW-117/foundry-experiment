@@ -38,8 +38,7 @@ export class Character extends ActorBase {
         }
         Object.keys(CONFIG.MYTT.stats).forEach((key) => {
             actorData.stats[key] = { 
-                name: CONFIG.MYTT.stats[key].name,
-                description: CONFIG.MYTT.stats[key].description,
+                ... CONFIG.MYTT.stats[key],
                 breakdown: [{
                     value: actorData.assignedStats[key],
                     source: "Allocated"
