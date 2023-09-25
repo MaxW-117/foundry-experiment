@@ -5,15 +5,18 @@ export const MYTT = {};
 MYTT.stats = {
   "spi": {
     "name":"Spirit",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/spirit.webp"
   },
   "int": {
     "name":"Intuition",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/intuition.webp"
   },
   "kno": {
     "name":"Knowledge",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/knowledge.webp"
   },
   // "per": {
   //   "name":"Perception",
@@ -21,27 +24,33 @@ MYTT.stats = {
   // },
   "cha": {
     "name":"Charisma",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/charisma.webp"
   },
   "vit": {
     "name":"Vitality",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/vitality.webp"
   },
   "end": {
     "name":"Endurance",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/endurance.webp"
   },
   "str": {
     "name":"Strength",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/strength.webp"
   },
   "dex": {
     "name":"Dexterity",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/dexterity.webp"
   },
   "agi": {
     "name":"Agility",
-    "description":""
+    "description":"",
+    "img": "systems/mytt/icons/stats/agility.webp"
   },
   "luc": {
     "name":"Luck",
