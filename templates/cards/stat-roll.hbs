@@ -1,6 +1,6 @@
-<div>
-  Rolling stat {{stat.name}}
-  <p>{{roll._formula}}</p>
-  <p>{{roll.result}}</p>
-  <p>{{roll.total}}</p>
+<div class="chat">
+  {{debug roll}}
+  <p class="roll-title">Rolling a <b>{{stat.name}}</b> check</p>
+  <p title="{{roll._formula}}">{{roll.result}}</p>
+  <p class="roll-result{{#if roll.isMin}} min-roll{{/if}}{{#if roll.isMax}} max-roll{{/if}}">{{roll.total}}</p>
 </div>

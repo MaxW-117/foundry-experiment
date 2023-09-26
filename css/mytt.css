@@ -223,6 +223,26 @@
   text-align: center;
 }
 
+.chat .roll-title {
+  font-family: "cursive";
+}
+
+.chat .roll-result {
+  border: 2px black groove;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px;
+}
+
+.chat .roll-result.min-roll {
+  border-color: red;
+}
+
+.chat .roll-result.max-roll {
+  border-color: #00d640;
+}
+
 /* Styles limited to mytt sheets */
 .mytt {
   /* ----------------------------------------- */

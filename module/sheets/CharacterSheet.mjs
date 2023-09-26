@@ -1,3 +1,5 @@
+import { RollHelper } from "../rolls/roll-helper.mjs";
+
 export class CharacterSheet {
 
     static prepareSheetData(context) {
@@ -127,9 +129,9 @@ export class CharacterSheet {
             owner: this.actor.id,
             stat: CONFIG.MYTT.stats[stat],
         }
-        const roll = new Roll(`floor(1d20 * (1 + (@stats.${stat}.value)/10))`, this.actor.getRollData())
-        await roll.evaluate();
-        cardData.roll = roll;
+        const r = await RollHelper.statRoll(this.actor.getRollData(), stat)
+        const results = await r.evaluate();
+        cardData.roll = results;
         cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
         return ChatMessage.create(cardData);
     }

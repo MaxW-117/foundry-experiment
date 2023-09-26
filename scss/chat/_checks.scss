@@ -1,0 +1,17 @@
+.chat {
+    .roll-title {
+        font-family: "cursive";
+    }
+    .roll-result {
+        border: 2px black groove;
+        width: fit-content;
+        padding: 2px;
+        
+    }
+    .roll-result.min-roll {
+        border-color: rgb(255, 0, 0);
+    }
+    .roll-result.max-roll {
+        border-color: rgb(0, 214, 64);
+    }
+}
