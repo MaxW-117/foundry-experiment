@@ -73,6 +73,7 @@ export class Character extends ActorBase {
         actorData.health.max = actorData.stats.vit.value * 3;
         actorData.mana.max = actorData.stats.kno.value * 4;
         actorData.stamina.max = actorData.stats.end.value * 0.5;
+        actorData.ac = 10 + actorData.stats.agi.value;
     }
 
     /** @override */
