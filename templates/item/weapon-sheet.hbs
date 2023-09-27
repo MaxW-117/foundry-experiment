@@ -1,0 +1,48 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+        </div>
+    </header>
+    <section class="grid grid-3col">
+        <aside class="sidebar item-stats">
+            <div class="item-stat-grouping">
+                <label for="data.category">Category</label>
+                <input type="text" name="data.category" value="{{data.category}}" data-dtype="String"/>
+                <label for="data.group">Group</label>
+                <input type="text" name="data.group" value="{{data.group}}" data-dtype="String"/>
+            </div>
+            <div class="item-stat-grouping">
+                <label for="data.attackStat">Attack Stat</label>
+                <input type="text" name="data.attackStat" value="{{data.attackStat}}" data-dtype="String"/>
+                <label for="data.attackBonus">Attack Bonus</label>
+                <input type="number" name="data.attackBonus" value="{{data.attackBonus}}" data-dtype="Number"/>
+                <label for="data.range">Range</label>
+                <input type="number" name="data.range" value="{{data.range}}" data-dtype="Number"/>
+            </div>
+            <div class="item-stat-grouping">
+                <label for="data.dmgStat">Damage Stat</label>
+                <input type="text" name="data.dmgStat" value="{{data.dmgStat}}" data-dtype="String"/>
+                <label for="data.minDamage">Damage Range</label>
+                <div class="range">
+                    <input type="number" name="data.minDamage" value="{{data.minDamage}}" data-dtype="Number"/> -
+                    <input type="number" name="data.maxDamage" value="{{data.maxDamage}}" data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="item-stat-grouping">
+                <label for="data.category">Stat Cap</label>
+                <div class="range">
+                    <input type="number" name="data.minStat" value="{{data.minStat}}" data-dtype="Number"/> -
+                    <input type="number" name="data.maxStat" value="{{data.maxStat}}" data-dtype="Number"/>
+                </div>
+            </div>
+        </aside>
+
+        <section class="main grid-span-2">
+            {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner
+            editable=editable}}
+        </section>
+  
+    </section>
+</form>

@@ -1,7 +1,7 @@
 import { ItemBase } from "./ItemBase.mjs";
 
 export class Ancestry extends ItemBase {
-  static type = 'item';
+  static type = 'ancestry';
 
 
   /**

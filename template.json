@@ -114,8 +114,8 @@
         "attackStat": "str",
         "dmgStat": "str",
         "attackBonus": 0,
-        "dmgBonus": 0,
-        "baseDmg": "1d4",
+        "minDamage":0,
+        "maxDamage":0,
         "minStat": 0,
         "maxStat": 0
       },

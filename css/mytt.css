@@ -486,6 +486,33 @@
   padding: 0 8px;
 }
 
+.mytt .sidebar.item-stats .item-stat-grouping {
+  border: 1px solid #333331;
+  padding: 5px;
+  margin: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.mytt .sidebar.item-stats .item-stat-grouping .range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.mytt .sidebar.item-stats .item-stat-grouping label {
+  font-weight: bold;
+}
+
 .mytt .effects .item .effect-source,
 .mytt .effects .item .effect-duration,
 .mytt .effects .item .effect-controls {

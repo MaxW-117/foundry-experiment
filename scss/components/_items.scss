@@ -118,3 +118,20 @@
   flex: 0 0 200px;
   padding: 0 8px;
 }
+
+.sidebar.item-stats {
+  .item-stat-grouping {
+    border: 1px solid #333331;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    .range {
+      display: flex;
+      flex-direction: row;
+    }
+    label {
+      font-weight: bold;
+    }
+  }
+}
