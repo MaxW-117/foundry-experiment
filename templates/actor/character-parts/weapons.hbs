@@ -1,0 +1,36 @@
+<div>
+  <ol class="items-list" data-type="weapon">
+    <li class="item flexrow items-header">
+      <div class="item-name">Weapons</div>
+      <div class="item-controls">
+        <a class="item-control item-create" title="Create item" data-type="weapon"><i class="fas fa-plus"></i>Add</a>
+      </div>
+    </li>
+    {{#each data.weapon}}
+      <li class="item flexrow" data-item-id="{{this._id}}">
+        <div class="item-name">
+          <div class="item-image">
+            <a class="rollable" data-roll-type="item"><img src="{{this.img}}" title="{{this.name}}" width="24" height="24"/></a>
+          </div>
+          <p>{{this.name}}</p>
+        </div>
+        <div class="item-prop">
+          {{#if this.data.data.range includeZero=true}}
+            <p>Melee</p>
+          {{else}}
+             <p>Range: {{this.data.data.range}}</p>
+          {{/if}}
+        </div>
+        <div class="item-prop">
+          <p>Attack: {{this.data.data.level}}</p>
+        </div>
+        <div class="item-prop">
+          <p>Damage: {{this.data.data.level}}</p>
+        </div>
+        <div class="item-controls">
+          <a class="item-control item-delete" title="Drop Item"><i class="fas fa-trash"></i></a>
+        </div>
+      </li>
+    {{/each}}
+  </ol>
+</div>
