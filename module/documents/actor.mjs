@@ -19,7 +19,7 @@ export class SystemActor extends Actor {
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
-    Character.prepareBaseData(this.data);
+    Character.prepareBaseData(this);
   }
 
   /**
@@ -32,12 +32,12 @@ export class SystemActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.data;
+    const actorData = this;
     const flags = actorData.flags.mytt || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    Character.prepareDerivedData(this.data);
+    Character.prepareDerivedData(this);
   }
 
 

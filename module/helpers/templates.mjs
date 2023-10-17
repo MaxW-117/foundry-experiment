@@ -13,6 +13,6 @@
     "systems/mytt/templates/actor/parts/actor-features.html",
     "systems/mytt/templates/actor/parts/actor-items.html",
     "systems/mytt/templates/actor/parts/actor-effects.html",
-    "systems/mytt/templates/actor/cards/stat-roll.html",
+    "systems/mytt/templates/cards/stat-roll.hbs",
   ]);
 };

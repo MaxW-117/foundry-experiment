@@ -55,7 +55,8 @@
         "statful",
         "classful",
         "base"
-      ]
+      ],
+      "proficiencies": {}
     },
     "npc": {
       "templates": [
@@ -110,12 +111,13 @@
       "weapon": {
         "category": "simple",
         "group": "sword",
+        "type": "short-sword",
         "range": 0,
         "attackStat": "str",
         "dmgStat": "str",
         "attackBonus": 0,
-        "minDamage":0,
-        "maxDamage":0,
+        "minDamage":1,
+        "maxDamage":1,
         "minStat": 0,
         "maxStat": 0
       },

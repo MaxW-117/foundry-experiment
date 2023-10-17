@@ -11,9 +11,9 @@ export class Character extends ActorBase {
 
     static sortItems(context) {
         for (let i of context.items) {
-            if (!context.data[i.type])
-                context.data[i.type] = []
-            context.data[i.type].push(i)
+            if (!context.system[i.type])
+                context.system[i.type] = []
+            context.system[i.type].push(i)
         }
     }
 
@@ -21,7 +21,7 @@ export class Character extends ActorBase {
 
     /** @override */
     static derivedData(context) {
-        const actorData = context.data;
+        const actorData = context.system;
         Character.setupStats(actorData);
         Character.deriveAncestries(actorData);
         Character.deriveStats(actorData);
@@ -57,7 +57,7 @@ export class Character extends ActorBase {
 
     static deriveAncestries(actorData){
         actorData.ancestry.forEach((a) => {
-            const ancestryData = a.data.data;
+            const ancestryData = a.system;
             Object.keys(ancestryData.stats).forEach((statKey) => {
                 actorData.stats[statKey].breakdown.push({
                     source: a.name,

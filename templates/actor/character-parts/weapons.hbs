@@ -15,17 +15,17 @@
           <p>{{this.name}}</p>
         </div>
         <div class="item-prop">
-          {{#if this.data.data.range includeZero=true}}
+          {{#if this.system.range includeZero=true}}
             <p>Melee</p>
           {{else}}
-             <p>Range: {{this.data.data.range}}</p>
+             <p>Range: {{this.system.range}}</p>
           {{/if}}
         </div>
         <div class="item-prop">
-          <p>Attack: {{this.data.data.level}}</p>
+          <p>Attack: 1d20 * 1</p>
         </div>
         <div class="item-prop">
-          <p>Damage: {{this.data.data.level}}</p>
+          <p>Damage: {{this.system.minDamage}} - {{this.system.maxDamage}}</p>
         </div>
         <div class="item-controls">
           <a class="item-control item-delete" title="Drop Item"><i class="fas fa-trash"></i></a>
