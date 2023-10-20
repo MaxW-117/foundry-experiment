@@ -1,5 +1,7 @@
+import { sum } from "../helpers/utils.mjs";
+
 export class RollHelper extends Roll {
-    constructor(rollText = '1d20', params = {}) {
+    constructor(rollText = '1d20', params = {}, target=null) {
         super(rollText, params)
     }
 
@@ -16,10 +18,23 @@ export class RollHelper extends Roll {
         const dieSize = max - min;
         const flatAmount = min;
         const rollText = '1d@dieSize + @flatAmount'
-        return new RollHelper(rollText, {
+        roll =  new RollHelper(rollText, {
             dieSize,
             flatAmount,
         })
+        roll.min = min;
+        roll.max = max;
+        return roll;
+    }
+
+    static evaluateRange(rangeModifiers) {
+        const minBase = rangeModifiers.filter(m => m.type === "minBase").sum('value');
+        const maxBase = rangeModifiers.filter(m => m.type === "maxBase").sum('value');
+        const minAssurance = rangeModifiers.filter(m => m.type === "minAssurance").sum('value');
+        const maxMult = rangeModifiers.filter(m => m.type === "maxMultiplier").sum('value');
+        const max = Math.floor(maxBase * maxMult)
+        const min = Math.floor(minBase + (max-minBase) * minAssurance)
+        return [min, max]
     }
 
     get total() {

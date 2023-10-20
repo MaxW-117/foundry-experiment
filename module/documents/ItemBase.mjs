@@ -31,7 +31,7 @@ export class ItemBase {
   /**
    * Override getRollData() that's supplied to rolls.
   */
-  static prepareRollData(actorData) {
+  static getRollData(actorData) {
     if (actorData.type !== this.type) return;
     this.rollData(actorData);
   }

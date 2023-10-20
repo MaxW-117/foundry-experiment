@@ -18,18 +18,21 @@
             <div class="item-stat-grouping">
                 <label for="data.attackStat">Attack Stat</label>
                 <input type="text" name="data.attackStat" value="{{data.attackStat}}" data-dtype="String"/>
-                <label for="data.attackBonus">Attack Bonus</label>
-                <input type="number" name="data.attackBonus" value="{{data.attackBonus}}" data-dtype="Number"/>
+                <label for="data.baseMaxAttack">Attack Roll</label>
+                <div class="range">
+                    <input type="number" name="data.baseMinAttack" value="{{data.baseMinAttack}}" data-dtype="Number"/> -
+                    <input type="number" name="data.baseMaxAttack" value="{{data.baseMaxAttack}}" data-dtype="Number"/>
+                </div>
                 <label for="data.range">Range</label>
                 <input type="number" name="data.range" value="{{data.range}}" data-dtype="Number"/>
             </div>
             <div class="item-stat-grouping">
-                <label for="data.dmgStat">Damage Stat</label>
-                <input type="text" name="data.dmgStat" value="{{data.dmgStat}}" data-dtype="String"/>
-                <label for="data.minDamage">Damage Range</label>
+                <label for="data.damageStat">Damage Stat</label>
+                <input type="text" name="data.damageStat" value="{{data.damageStat}}" data-dtype="String"/>
+                <label for="data.baseMaxDamage">Damage Range</label>
                 <div class="range">
-                    <input type="number" name="data.minDamage" value="{{data.minDamage}}" data-dtype="Number"/> -
-                    <input type="number" name="data.maxDamage" value="{{data.maxDamage}}" data-dtype="Number"/>
+                    <input type="number" name="data.baseMinDamage" value="{{data.baseMinDamage}}" data-dtype="Number"/> -
+                    <input type="number" name="data.baseMaxDamage" value="{{data.baseMaxDamage}}" data-dtype="Number"/>
                 </div>
             </div>
             <div class="item-stat-grouping">

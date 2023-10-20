@@ -42,7 +42,8 @@
         }
       },
       "classful": {
-        "classes": {}
+        "classes": {},
+        "proficiencies": {}
       },
       "simpleLeveled": {
         "level": 1,
@@ -55,8 +56,7 @@
         "statful",
         "classful",
         "base"
-      ],
-      "proficiencies": {}
+      ]
     },
     "npc": {
       "templates": [
@@ -114,10 +114,11 @@
         "type": "short-sword",
         "range": 0,
         "attackStat": "str",
-        "dmgStat": "str",
-        "attackBonus": 0,
-        "minDamage":1,
-        "maxDamage":1,
+        "damageStat": "str",
+        "baseMinAttack": 1,
+        "baseMaxAttack": 20,
+        "baseMinDamage":1,
+        "baseMaxDamage":1,
         "minStat": 0,
         "maxStat": 0
       },

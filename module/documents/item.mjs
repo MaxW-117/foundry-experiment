@@ -1,3 +1,5 @@
+import { Weapon } from "./Weapon.mjs";
+
 /**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
@@ -10,6 +12,7 @@ export class SystemItem extends Item {
     // As with the actor class, items are documents that can have their data
     // preparation methods overridden (such as prepareBaseData()).
     super.prepareData();
+    Weapon.prepareData(this)
   }
 
   /**
@@ -22,6 +25,8 @@ export class SystemItem extends Item {
     const rollData = this.actor.getRollData();
     rollData.item = foundry.utils.deepClone(this.system);
 
+    Weapon.getRollData();
+    
     return rollData;
   }
 

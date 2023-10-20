@@ -7,6 +7,7 @@
       </div>
     </li>
     {{#each data.weapon}}
+    {{debug this}}
       <li class="item flexrow" data-item-id="{{this._id}}">
         <div class="item-name">
           <div class="item-image">
@@ -22,10 +23,10 @@
           {{/if}}
         </div>
         <div class="item-prop">
-          <p>Attack: 1d20 * 1</p>
+          <p>Attack: {{this.system.attackMin}} - {{this.system.attackMax}}</p>
         </div>
         <div class="item-prop">
-          <p>Damage: {{this.system.minDamage}} - {{this.system.maxDamage}}</p>
+          <p>Damage: {{this.system.damageMin}} - {{this.system.damageMax}}</p>
         </div>
         <div class="item-controls">
           <a class="item-control item-delete" title="Drop Item"><i class="fas fa-trash"></i></a>

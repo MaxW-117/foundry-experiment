@@ -135,4 +135,23 @@ export class CharacterSheet {
         cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
         return ChatMessage.create(cardData);
     }
+
+    static async _onItemRoll(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const itemId = element.closest('.item.flexrow').dataset["item-id"];
+        const item = this.actor.items.get(itemId);
+        const cardData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            owner: this.actor.id,
+            item,
+        }
+        const rollData = item.getRollData()
+        const r = await RollHelper.statRoll(this.actor.getRollData(), stat)
+        const results = await r.evaluate();
+        cardData.roll = results;
+        cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
+        return ChatMessage.create(cardData);
+    }
 }
