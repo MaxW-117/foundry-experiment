@@ -78,7 +78,7 @@ export class SystemActorSheet extends ActorSheet {
     html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    // html.find('.rollable').click(this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.owner) {

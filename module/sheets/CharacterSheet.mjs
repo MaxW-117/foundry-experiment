@@ -1,3 +1,4 @@
+import { AllItems } from "../documents/AllItems.mjs";
 import { RollHelper } from "../rolls/roll-helper.mjs";
 
 export class CharacterSheet {
@@ -73,6 +74,8 @@ export class CharacterSheet {
         html.find('.stat-add').click(CharacterSheet._onStatAdd.bind(this))
 
         html.find('.rollable.stat-roll').click(CharacterSheet._onStatRoll.bind(this))
+
+        html.find('.rollable.item-roll').click(CharacterSheet._onItemRoll.bind(this))
     }
 
     /**
@@ -139,19 +142,8 @@ export class CharacterSheet {
     static async _onItemRoll(event) {
         event.preventDefault();
         const element = event.currentTarget;
-        const itemId = element.closest('.item.flexrow').dataset["item-id"];
+        const itemId = element.closest('li.item').dataset["itemId"];
         const item = this.actor.items.get(itemId);
-        const cardData = {
-            user: game.user._id,
-            speaker: ChatMessage.getSpeaker(),
-            owner: this.actor.id,
-            item,
-        }
-        const rollData = item.getRollData()
-        const r = await RollHelper.statRoll(this.actor.getRollData(), stat)
-        const results = await r.evaluate();
-        cardData.roll = results;
-        cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
-        return ChatMessage.create(cardData);
+        AllItems.rollItem(item);
     }
 }

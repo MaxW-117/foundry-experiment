@@ -15,5 +15,6 @@
     "systems/mytt/templates/actor/parts/actor-items.html",
     "systems/mytt/templates/actor/parts/actor-effects.html",
     "systems/mytt/templates/cards/stat-roll.hbs",
+    "systems/mytt/templates/cards/weapon-roll.hbs",
   ]);
 };

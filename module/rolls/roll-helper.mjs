@@ -14,12 +14,12 @@ export class RollHelper extends Roll {
         return roll;
     }
 
-    static scalarRoll(min, max) {
+    static rangeRoll(min, max) {
         const dieSize = max - min;
         const flatAmount = min;
-        const rollText = '1d@dieSize + @flatAmount'
-        roll =  new RollHelper(rollText, {
-            dieSize,
+        console.log({min, max, dieSize, flatAmount})
+        const rollText = `1d${dieSize} + @flatAmount`
+        const roll =  new RollHelper(rollText, {
             flatAmount,
         })
         roll.min = min;

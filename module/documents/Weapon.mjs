@@ -114,8 +114,25 @@ export class Weapon extends ItemBase {
       }
       item.damageRollRangeModifiers.push(statMod)
     }
-    const damageRollRange = RollHelper.evaluateRange(item.attackRollRangeModifiers);
+    const damageRollRange = RollHelper.evaluateRange(item.damageRollRangeModifiers);
     item.damageMin = damageRollRange[0];
     item.damageMax = damageRollRange[1];
+  }
+
+  static async roll(item, options) {
+    if (options?.type == "damage") return console.error("not built yet")
+    const cardData = {
+      user: game.user._id,
+      speaker: ChatMessage.getSpeaker(),
+      owner: item.actor._id,
+      item: item.system,
+      data: item,
+    }
+    // this.evaluateAttackRange(item)
+    const r = await RollHelper.rangeRoll(item.system.attackMin, item.system.attackMax)
+    const results = await r.evaluate();
+    cardData.roll = results;
+    cardData.content = await renderTemplate(CONFIG.MYTT.templates.weaponrollCard, cardData);
+    return ChatMessage.create(cardData);
   }
 }
