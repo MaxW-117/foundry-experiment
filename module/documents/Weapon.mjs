@@ -8,68 +8,13 @@ export class Weapon extends ItemBase {
   /** @override */
   static prepData(itemData) {
     // console.info("Weapon - prepData", {itemData})
-    const item = itemData.system;
-    const actor = itemData.actor?.system;
-    item.attackRollRangeModifiers = [
-      {
-        type: 'minBase',
-        value: item.baseMinAttack,
-        name: 'Minimum Base',
-      },
-      {
-        type: 'maxBase',
-        value: item.baseMaxAttack,
-        name: 'Maximum Base',
-      }
-    ];
-    if (actor) {
-      itemData.actor.prepareDerivedData();
-      const proficiencies = [item.group, item.category, item.type];
-      const profMods = proficiencies.map((p) => {
-        return {
-          type: 'minAssurance',
-          value: actor.proficiencies[p]?.value || 0,
-          name: actor.proficiencies[p]?.name || p,
-        }
-      });
+    if (itemData.actor) itemData.actor.prepareDerivedData();
+    this.evaluateAttackRange(itemData);
+    this.evaluateDamageRange(itemData);
 
-      const statValue = actor.stats[item.attackStat].value || 0;
-      const statMod = {
-        type: 'maxMultiplier',
-        value: extrapolateStatMultiplier(item.attackStat, statValue),
-        name: item.attackStat,
-      }
-      item.attackRollRangeModifiers.push(...profMods, statMod)
-    }
-    const attackRollRange = RollHelper.evaluateRange(item.attackRollRangeModifiers);
-    item.attackMin = attackRollRange[0];
-    item.attackMax = attackRollRange[1];
+    
 
-    item.damageRollRangeModifiers = [
-      {
-        type: 'minBase',
-        value: item.baseMinDamage,
-        name: 'Minimum Base',
-      },
-      {
-        type: 'maxBase',
-        value: item.baseMaxDamage,
-        name: 'Maximum Base',
-      }
-    ];
-
-    if (actor) {
-      const statValue = actor.stats[item.damageStat].value || 0;
-      const statMod = {
-        type: 'maxMultiplier',
-        value: extrapolateStatMultiplier(item.damageStat, statValue),
-        name: item.damageStat,
-      }
-      item.damageRollRangeModifiers.push(statMod)
-    }
-    const damageRollRange = RollHelper.evaluateRange(item.attackRollRangeModifiers);
-    item.damageMin = damageRollRange[0];
-    item.damageMax = damageRollRange[1];
+    
     console.log("Weapon - after prepData", {item})
   }
 
@@ -107,5 +52,73 @@ export class Weapon extends ItemBase {
   //   const attackRollRange = RollHelper.evaluateRange(itemData.attackRollRangeModifiers);
   //   itemData.attackMin = attackRollRange[0];
   //   itemData.attackMax = attackRollRange[1];
+  }
+
+  static evaluateAttackRange(itemData) {
+    const item = itemData.system;
+    const actor = itemData.actor?.system;
+    item.attackRollRangeModifiers = [
+      {
+        type: 'minBase',
+        value: item.baseMinAttack,
+        name: 'Minimum Base',
+      },
+      {
+        type: 'maxBase',
+        value: item.baseMaxAttack,
+        name: 'Maximum Base',
+      }
+    ];
+    if (actor) {
+      const proficiencies = [item.group, item.category, item.type];
+      const profMods = proficiencies.map((p) => {
+        return {
+          type: 'minAssurance',
+          value: actor.proficiencies[p]?.value || 0,
+          name: actor.proficiencies[p]?.name || p,
+        }
+      });
+
+      const statValue = actor.stats[item.attackStat].value || 0;
+      const statMod = {
+        type: 'maxMultiplier',
+        value: extrapolateStatMultiplier(item.attackStat, statValue),
+        name: item.attackStat,
+      }
+      item.attackRollRangeModifiers.push(...profMods, statMod)
+    }
+    const attackRollRange = RollHelper.evaluateRange(item.attackRollRangeModifiers);
+    item.attackMin = attackRollRange[0];
+    item.attackMax = attackRollRange[1];
+  }
+
+  static evaluateDamageRange(itemData) {
+    const item = itemData.system;
+    const actor = itemData.actor?.system;
+    item.damageRollRangeModifiers = [
+      {
+        type: 'minBase',
+        value: item.baseMinDamage,
+        name: 'Minimum Base',
+      },
+      {
+        type: 'maxBase',
+        value: item.baseMaxDamage,
+        name: 'Maximum Base',
+      }
+    ];
+
+    if (actor) {
+      const statValue = actor.stats[item.damageStat].value || 0;
+      const statMod = {
+        type: 'maxMultiplier',
+        value: extrapolateStatMultiplier(item.damageStat, statValue),
+        name: item.damageStat,
+      }
+      item.damageRollRangeModifiers.push(statMod)
+    }
+    const damageRollRange = RollHelper.evaluateRange(item.attackRollRangeModifiers);
+    item.damageMin = damageRollRange[0];
+    item.damageMax = damageRollRange[1];
   }
 }
