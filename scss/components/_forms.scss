@@ -34,14 +34,23 @@
   }
 }
 
-.sheet-tabs {
+.sheet-tabs,
+.action-tabs {
   flex: 0;
 }
 
+.action-body,
 .sheet-body,
 .sheet-body .tab,
 .sheet-body .tab .editor {
   height: 100%;
+}
+
+nav.vertical {
+  flex-direction: column;
+  .item {
+    margin: 10px;
+  }
 }
 
 .tox {

@@ -12,10 +12,7 @@ export class Weapon extends ItemBase {
     this.evaluateAttackRange(itemData);
     this.evaluateDamageRange(itemData);
 
-    
-
-    
-    console.log("Weapon - after prepData", {item})
+    console.log("Weapon - after prepData", {itemData})
   }
 
   /** @override */

@@ -14,7 +14,10 @@ export class SystemActorSheet extends ActorSheet {
       template: "systems/mytt/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [
+        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "actions" },
+        { navSelector: ".action-tabs", contentSelector: ".action-body", initial: "weapons" },
+      ]
     });
   }
 

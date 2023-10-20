@@ -308,6 +308,14 @@
   flex: 0;
 }
 
+.mytt nav.vertical {
+  flex-direction: column;
+}
+
+.tabs.vertical .item {
+  margin: 10px;
+}
+
 .mytt .sheet-body,
 .mytt .sheet-body .tab,
 .mytt .sheet-body .tab .editor {
