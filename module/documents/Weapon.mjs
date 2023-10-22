@@ -1,4 +1,5 @@
 import { extrapolateStatMultiplier } from "../helpers/utils.mjs";
+import { RollCheck } from "../rolls/roll-check.mjs";
 import { RollHelper } from "../rolls/roll-helper.mjs";
 import { ItemBase } from "./ItemBase.mjs";
 
@@ -67,7 +68,7 @@ export class Weapon extends ItemBase {
       }
     ];
     if (actor) {
-      const proficiencies = [item.group, item.category, item.type];
+      const proficiencies = ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type];
       const profMods = proficiencies.map((p) => {
         return {
           type: 'minAssurance',
@@ -129,10 +130,15 @@ export class Weapon extends ItemBase {
       data: item,
     }
     // this.evaluateAttackRange(item)
-    const r = await RollHelper.rangeRoll(item.system.attackMin, item.system.attackMax)
+    const r = new RollCheck({
+      min: item.system.attackMin,
+      max: item.system.attackMax,
+      player: item.player,
+      proficiencies: ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type]
+    });
     const results = await r.evaluate();
     cardData.roll = results;
-    cardData.content = await renderTemplate(CONFIG.MYTT.templates.weaponrollCard, cardData);
+    cardData.content = await renderTemplate(CONFIG.MYTT.templates.weaponRollCard, cardData);
     return ChatMessage.create(cardData);
   }
 }

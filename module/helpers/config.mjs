@@ -60,5 +60,5 @@ MYTT.stats = {
 
 MYTT.templates = {
   "statRollCard": 'systems/mytt/templates/cards/stat-roll.hbs',
-  "weaponrollCard": 'systems/mytt/templates/cards/weapon-roll.hbs',
+  "weaponRollCard": 'systems/mytt/templates/cards/weapon-roll.hbs',
 };

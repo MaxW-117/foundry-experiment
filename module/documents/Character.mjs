@@ -56,7 +56,7 @@ export class Character extends ActorBase {
     }
 
     static deriveAncestries(actorData){
-        actorData.ancestry.forEach((a) => {
+        actorData.ancestry?.forEach((a) => {
             const ancestryData = a.system;
             Object.keys(ancestryData.stats).forEach((statKey) => {
                 actorData.stats[statKey].breakdown.push({
