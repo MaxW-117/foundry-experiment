@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Proficiency</th>
+      <th>Level</th>
+      <th>Progress</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data.proficiencies}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.level}}</td>
+      <td>{{this.progress}}</td>
+      <td>ACTIONS HERE</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
