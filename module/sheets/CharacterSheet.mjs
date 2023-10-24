@@ -31,8 +31,8 @@ export class CharacterSheet {
                     ...data.stats[key],
                     key: key,
                     breakdownText: data.stats[key].breakdown
-                      .map((b) => `${b.source}: ${b.value}`)
-                      .join(', '),
+                        .map((b) => `${b.source}: ${b.value}`)
+                        .join(', '),
                 };
             });
     }
@@ -111,7 +111,7 @@ export class CharacterSheet {
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         const field = element.dataset.field;
-        
+
         return item.update({ [field]: element.value })
     }
 
@@ -119,7 +119,7 @@ export class CharacterSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const stat = element.closest('.stat-row').dataset.stat;
-        this.actor.update({["data.assignedStats."+stat]: this.actor.system.assignedStats[stat] + 1})
+        this.actor.update({ ["data.assignedStats." + stat]: this.actor.system.assignedStats[stat] + 1 })
     }
 
     static async _onStatRoll(event) {
@@ -144,6 +144,7 @@ export class CharacterSheet {
         const element = event.currentTarget;
         const itemId = element.closest('li.item').dataset["itemId"];
         const item = this.actor.items.get(itemId);
-        AllItems.rollItem(item);
+        const target = game.user.targets.values().next()?.value;
+        AllItems.rollItem(item, {target});
     }
 }

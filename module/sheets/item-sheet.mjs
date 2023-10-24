@@ -1,3 +1,4 @@
+import { registerHandlebarsHelpers } from "../helpers/handlebars-helpers.mjs";
 import { AncestrySheet } from "./AncestrySheet.mjs";
 
 /**
@@ -31,20 +32,8 @@ export class SystemItemSheet extends ItemSheet {
 
   /** @override */
   getData() {
-    Handlebars.registerHelper("debug", function(optionalValue) {
-      console.log("Current Context");
-      console.log("====================");
-      console.log(this);
-      if (optionalValue) {
-          console.log("Value");
-          console.log("====================");
-          console.log(optionalValue);
-      }
-    });
 
-    Handlebars.registerHelper("findAttribute", function(attKey, options) {
-      return options.fn({ attribute: CONFIG.MYTT.stats[attKey] })
-    });
+    registerHandlebarsHelpers();
     // Retrieve base data structure.
     const context = super.getData();
 

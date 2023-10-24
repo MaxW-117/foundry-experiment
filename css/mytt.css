@@ -546,3 +546,7 @@
 .mytt a.rollable.stat-roll span {
   padding-left: 10px;
 }
+
+.gm-only {
+  background-color: thistle;
+}

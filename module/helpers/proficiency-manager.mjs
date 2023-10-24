@@ -16,7 +16,7 @@ export function proficiencyFactory(name) {
 }
 
 export function incrementProficiencies(player, profs, amount) {
-  if (!player?.proficiencies) return console.error('incrementProficiencies - No proficiecies for this actor')
+  if (!player?.proficiencies) return console.error('incrementProficiencies - No proficiencies for this actor')
   if (profs.length < 1) return;
 
   profs.forEach((p) => {

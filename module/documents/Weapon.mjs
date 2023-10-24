@@ -10,6 +10,7 @@ export class Weapon extends ItemBase {
   static prepData(itemData) {
     // console.info("Weapon - prepData", {itemData})
     if (itemData.actor) itemData.actor.prepareDerivedData();
+
     this.evaluateAttackRange(itemData);
     this.evaluateDamageRange(itemData);
 
@@ -122,6 +123,13 @@ export class Weapon extends ItemBase {
 
   static async roll(item, options) {
     if (options?.type == "damage") return console.error("not built yet")
+    let dc = undefined;
+    if (options.target) {
+      dc = options.target.actor.system.ac;
+      console.log('target', options.target.actor.system)
+
+    }
+    console.log('dc', dc)
     const cardData = {
       user: game.user._id,
       speaker: ChatMessage.getSpeaker(),
@@ -134,7 +142,8 @@ export class Weapon extends ItemBase {
       min: item.system.attackMin,
       max: item.system.attackMax,
       player: item.player,
-      proficiencies: ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type]
+      proficiencies: ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type],
+      dc,
     });
     const results = await r.evaluate();
     cardData.roll = results;

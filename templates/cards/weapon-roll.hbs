@@ -1,7 +1,19 @@
-<div class="chat">
-{{debug}}
+<div class="chat">{{debug roll}}
+
   <p class="roll-title">Attacking with <b>{{data.name}}</b> ({{roll.min}}-{{roll.max}})</p>
-  <p class="roll-result{{#if roll.isMin}} min-roll{{/if}}{{#if roll.isMax}} max-roll{{/if}}">{{roll.total}}</p>
+  {{#gmOnly}}
+    <p>This is for GM</p>
+  {{/gmOnly}}
+  <p class="roll-result{{#if roll.isMin}} min-roll{{/if}}{{#if roll.isMax}} max-roll{{/if}}">
+    {{roll.total}}
+    {{#gmOnly}}
+      {{#if roll.dc}}
+      |  Target: {{roll.dc}}
+      {{else}}
+      |  No Target!
+      {{/if}}
+    {{/gmOnly}}
+  </p>
   {{#if roll.criticalFailure}}
     <p>Critical Fail!</p>
   {{else if roll.failure}}

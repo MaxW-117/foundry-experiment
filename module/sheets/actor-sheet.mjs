@@ -1,5 +1,6 @@
 import { CharacterSheet } from "./CharacterSheet.mjs";
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import { registerHandlebarsHelpers } from "../helpers/handlebars-helpers.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -36,16 +37,7 @@ export class SystemActorSheet extends ActorSheet {
     // editable, the items array, and the effects array.
     const context = super.getData();
 
-    Handlebars.registerHelper("debug", function(optionalValue) {
-      console.log("Current Context");
-      console.log("====================");
-      console.log(this);
-      if (optionalValue) {
-          console.log("Value");
-          console.log("====================");
-          console.log(optionalValue);
-      }
-    });
+    registerHandlebarsHelpers();
 
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.data.toObject(false);
