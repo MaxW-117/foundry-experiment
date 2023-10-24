@@ -15,22 +15,22 @@ export function proficiencyFactory(name) {
   }
 }
 
-export function incrementProficiencies(player, profs, amount) {
-  if (!player?.proficiencies) return console.error('incrementProficiencies - No proficiencies for this actor')
+export function incrementProficiencies(actor, profs, amount) {
+  if (!actor?.system?.proficiencies) return console.error('incrementProficiencies - No proficiencies for this actor')
   if (profs.length < 1) return;
 
   profs.forEach((p) => {
-    if (!player.proficiencies[p]) {
-      player.proficiencies[p] = proficiencyFactory[p]
+    if (!actor.system.proficiencies[p]) {
+      actor.system.proficiencies[p] = proficiencyFactory(p);
     }
 
-    const proficiency = player.proficiencies[p];
+    const proficiency = actor.system.proficiencies[p];
     proficiency.progress += amount;
-    evaluateProficiencyLevelUp(player, proficiency);
+    evaluateProficiencyLevelUp(proficiency);
   })
 }
 
-function evaluateProficiencyLevelUp(player, proficiency) {
+function evaluateProficiencyLevelUp(proficiency) {
   const failuresRemaining = sufficientFailuresToLevel(proficiency.key, proficiency.progress);
   if (failuresRemaining >= 0) {
     proficiency.level ++;

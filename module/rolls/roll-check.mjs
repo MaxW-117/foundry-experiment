@@ -2,11 +2,11 @@ import { criticalFailureProficiencyIncrement, criticalFailureThresholdFor, criti
 import { incrementProficiencies } from "../helpers/proficiency-manager.mjs";
 
 export class RollCheck {
-  constructor({min, max, dc, player, proficiencies}) {
+  constructor({min, max, dc, actor, proficiencies}) {
     this.min = min;
     this.max = max;
     this.dc = dc;
-    this.player = player;
+    this.actor = actor;
     this.proficiencies = proficiencies;
     const dieSize = max - min;
     const flatAmount = min;
@@ -52,9 +52,9 @@ export class RollCheck {
       console.log('skipping proficiency boosts')
     } else {
       if (this.criticalFailure) {
-        incrementProficiencies(this.player, this.proficiencies, criticalFailureProficiencyIncrement)
+        incrementProficiencies(this.actor, this.proficiencies, criticalFailureProficiencyIncrement)
       } else if (this.failure) {
-        incrementProficiencies(this.player, this.proficiencies, failureProficiencyIncrement)
+        incrementProficiencies(this.actor, this.proficiencies, failureProficiencyIncrement)
       }
     }
     return { 

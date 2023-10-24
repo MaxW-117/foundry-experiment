@@ -126,10 +126,7 @@ export class Weapon extends ItemBase {
     let dc = undefined;
     if (options.target) {
       dc = options.target.actor.system.ac;
-      console.log('target', options.target.actor.system)
-
     }
-    console.log('dc', dc)
     const cardData = {
       user: game.user._id,
       speaker: ChatMessage.getSpeaker(),
@@ -142,7 +139,8 @@ export class Weapon extends ItemBase {
       min: item.system.attackMin,
       max: item.system.attackMax,
       player: item.player,
-      proficiencies: ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type],
+      actor: item.actor,
+      proficiencies: ['weapon-group-'+item.system.group, 'weapon-category-'+item.system.category, 'weapon-type-'+item.system.type],
       dc,
     });
     const results = await r.evaluate();
