@@ -1,5 +1,5 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
-
+  {{debug this}}
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
@@ -14,29 +14,29 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="data.health.value" class="resource-label">Health</label>
-          <div class="resource-display" style="--percent: {{data.health.percentage}}; --color: #9e0404">
-            <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" />
-            <span> / {{data.health.max}}</span>
+          <label for="system.health.value" class="resource-label">Health</label>
+          <div class="resource-display" style="--percent: {{system.health.percentage}}; --color: #9e0404">
+            <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number" />
+            <span> / {{system.health.max}}</span>
           </div>
         </div>
 
-        {{#if data.showStamina }}
+        {{#if system.showStamina }}
         <div class="resource flex-group-center">
-          <label for="data.stamina.value" class="resource-label">Stamina</label>
-          <div class="resource-display" style="--percent: {{data.stamina.percentage}}; --color: green">
-            <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number" />
-            <span> / {{data.stamina.max}}</span>
+          <label for="system.stamina.value" class="resource-label">Stamina</label>
+          <div class="resource-display" style="--percent: {{system.stamina.percentage}}; --color: green">
+            <input type="text" name="system.stamina.value" value="{{system.stamina.value}}" data-dtype="Number" />
+            <span> / {{system.stamina.max}}</span>
           </div>
         </div>
         {{/if}}
 
-        {{#if data.showMana }}
+        {{#if system.showMana }}
         <div class="resource flex-group-center">
-          <label for="data.mana.value" class="resource-label">Mana</label>
-          <div class="resource-display" style="--percent: {{data.mana.percentage}}; --color: blue">
-            <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number" />
-            <span> / {{data.mana.max}}</span>
+          <label for="system.mana.value" class="resource-label">Mana</label>
+          <div class="resource-display" style="--percent: {{system.mana.percentage}}; --color: blue">
+            <input type="text" name="system.mana.value" value="{{system.mana.value}}" data-dtype="Number" />
+            <span> / {{system.mana.max}}</span>
           </div>
         </div>
         {{/if}}
@@ -45,7 +45,7 @@
 
       <div class="grid grid-3col">
         <div class="flex-group-center">
-          <label for="data.ac" class="info-display">AC: {{data.ac}}</label>
+          <label for="system.ac" class="info-display">AC: {{system.ac}}</label>
         </div>
       </div>
     </div>

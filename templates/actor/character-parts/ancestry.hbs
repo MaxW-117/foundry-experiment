@@ -5,7 +5,7 @@
       <a class="item-control item-create" title="Create item" data-type="ancestry"><i class="fas fa-plus"></i>Add</a>
     </div>
   </li>
-  {{#each data.ancestry}}
+  {{#each system.ancestry}}
     <li class="item flexrow" data-item-id="{{this._id}}">
       <div class="item-name">
         <div class="item-image">
@@ -14,7 +14,7 @@
         <p>{{this.name}}</p>
       </div>
       <div class="item-prop">
-        <p><input class="inline-edit" data-field="data.level" type="number" name="ancestry.data.level" value="{{this.system.level}}" data-dtype="Number"/></p>
+        <p><input class="inline-edit" data-field="system.level" type="number" name="ancestry.system.level" value="{{this.system.level}}" data-dtype="Number"/></p>
       </div>
       <div class="item-controls">
         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>

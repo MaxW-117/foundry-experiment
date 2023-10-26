@@ -1,16 +1,16 @@
 <div>
-  {{#if data.freeStatPointsAvailable }}
-    <p>Free points available! ({{data.freeStatPoints.unallocated}})</p>
+  {{#if system.freeStatPointsAvailable }}
+    <p>Free points available! ({{system.freeStatPoints.unallocated}})</p>
   {{/if}}
   <table class="statTable">
     <tr>
       <th>Attributes</th>
       <th>Total</th>
-      {{#if data.freeStatPointsAvailable }}
+      {{#if system.freeStatPointsAvailable }}
         <th>Add</th>
       {{/if}}
     </tr>
-    {{#each data.displayStats as |stat|}}
+    {{#each system.displayStats as |stat|}}
       <tr class="stat-row" data-stat="{{stat.key}}">
         <td title="{{stat.description}}">
           <a class="rollable stat-roll" data-roll-type="stat">
@@ -19,7 +19,7 @@
           </a>
         </td>
         <td title="{{stat.breakdownText}}">{{stat.value}}</td>
-        {{#if ../data.freeStatPointsAvailable }}
+        {{#if ../system.freeStatPointsAvailable }}
           <td>
             <a class="item-control stat-add" title="Add free point"><i class="fas fa-plus"></i></a>
           </td>
