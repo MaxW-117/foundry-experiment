@@ -1,4 +1,5 @@
 import { MyttActorSheet } from '../actor-sheet.mjs'
+import { RollHelper } from '../../helpers/rolls/roll-helper.mjs'
 
 export class CharacterSheet extends MyttActorSheet {
   getData() {

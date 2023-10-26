@@ -1,5 +1,5 @@
 import { extrapolateStatMultiplier } from "../../helpers/utils.mjs";
-import { RollCheck } from "../../rolls/roll-check.mjs";
+import { RollCheck } from "../../helpers/rolls/roll-check.mjs";
 import { MyttItem } from "../item.mjs";
 
 export class Weapon extends MyttItem {

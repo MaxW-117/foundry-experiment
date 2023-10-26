@@ -1,5 +1,5 @@
-import { criticalFailureProficiencyIncrement, criticalFailureThresholdFor, criticalSuccessThresholdFor, failureProficiencyIncrement } from "../helpers/balancing-controls.mjs";
-import { incrementProficiencies } from "../helpers/proficiency-manager.mjs";
+import { criticalFailureProficiencyIncrement, criticalFailureThresholdFor, criticalSuccessThresholdFor, failureProficiencyIncrement } from "../balancing-controls.mjs";
+import { incrementProficiencies } from "../proficiency-manager.mjs";
 
 export class RollCheck {
   constructor({min, max, dc, actor, proficiencies}) {

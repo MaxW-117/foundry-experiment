@@ -1,5 +1,3 @@
-import { sum } from "../helpers/utils.mjs";
-
 export class RollHelper extends Roll {
     constructor(rollText = '1d20', params = {}, target=null) {
         super(rollText, params)

@@ -8,6 +8,7 @@ import { AncestrySheet } from "./items/ancestry/ancestry.sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { MYTT } from "./helpers/config.mjs";
+import * as utils from "./helpers/utils.mjs"
 import { registerHandlebarsHelpers } from "./helpers/handlebars-helpers.mjs";
 
 
