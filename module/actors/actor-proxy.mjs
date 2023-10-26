@@ -28,7 +28,7 @@ export const MyttActorProxy = new Proxy(function () {}, {
         return function (data, options) {
           if (data.constructor === Array) {
             //Array of data, this happens when creating Actors imported from a compendium
-            return data.map(i => NumeneraActor.create(i, options));
+            return data.map(i => MyttActor.create(i, options));
           }
 
           if (!actorMappings.hasOwnProperty(data.type))

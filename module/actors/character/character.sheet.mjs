@@ -120,7 +120,7 @@ export class CharacterSheet extends MyttActorSheet {
     event.preventDefault();
     const element = event.currentTarget;
     const stat = element.closest('.stat-row').dataset.stat;
-    this.actor.update({ ["data.assignedStats." + stat]: this.actor.system.assignedStats[stat] + 1 })
+    this.actor.update({ ["system.assignedStats." + stat]: this.actor.system.assignedStats[stat] + 1 })
   }
 
   async _onStatRoll(event) {

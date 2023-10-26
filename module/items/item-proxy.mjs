@@ -30,7 +30,7 @@ export const MyttItemProxy = new Proxy(function () {}, {
         return function (data, options) {
           if (data.constructor === Array) {
             //Array of data, this happens when creating Items imported from a compendium
-            return data.map(i => NumeneraItem.create(i, options));
+            return data.map(i => MyttItem.create(i, options));
           }
 
           if (!itemMapping.hasOwnProperty(data.type))
