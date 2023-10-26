@@ -19,5 +19,20 @@ export function registerHandlebarsHelpers() {
       return `<span class="gm-only">${options.fn(this)}</span>`;
     }
   });
+
+  Handlebars.registerHelper('concat', function() {
+    var outStr = '';
+    for (var arg in arguments) {
+      if (typeof arguments[arg] != 'object') {
+        outStr += arguments[arg];
+      }
+    }
+    return outStr;
+  });
+  
+  Handlebars.registerHelper('toLowerCase', function(str) {
+    return str.toLowerCase();
+  });
+  
 }
 

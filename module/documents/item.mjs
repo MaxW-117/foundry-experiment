@@ -25,6 +25,7 @@ export class SystemItem extends Item {
     const rollData = this.actor.getRollData();
     rollData.item = foundry.utils.deepClone(this.system);
 
+
     Weapon.getRollData();
     
     return rollData;

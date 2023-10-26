@@ -1,6 +1,3 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
-import { registerHandlebarsHelpers } from "../helpers/handlebars-helpers.mjs";
-
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -35,8 +32,6 @@ export class MyttActorSheet extends ActorSheet {
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
     const context = super.getData();
-
-    registerHandlebarsHelpers();
 
     const actorData = this.actor.toObject(false);
     

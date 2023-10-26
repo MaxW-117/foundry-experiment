@@ -1,13 +1,15 @@
 // Import document classes.
-import { SystemActor } from "./documents/actor.mjs";
-import { SystemItem } from "./documents/item.mjs";
+import { MyttActorProxy } from "./actors/actor-proxy.mjs";
+import { MyttItemProxy } from "./items/item-proxy.mjs";
 // Import sheet classes.
-import { SystemItemSheet } from "./sheets/item-sheet.mjs";
+import { CharacterSheet } from "./actors/character/character.sheet.mjs";
+import { WeaponSheet } from "./items/weapon/weapon.sheet.mjs";
+import { AncestrySheet } from "./items/ancestry/ancestry.sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { MYTT } from "./helpers/config.mjs";
-import { MyttActorProxy } from "./actors/actor-proxy.mjs";
-import { CharacterSheet } from "./actors/character/character.sheet.mjs";
+import { registerHandlebarsHelpers } from "./helpers/handlebars-helpers.mjs";
+
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -19,7 +21,7 @@ Hooks.once('init', async function() {
   // accessible in global contexts.
   game.mytt = {
     MyttActorProxy,
-    SystemItem,
+    MyttItemProxy,
     rollItemMacro
   };
 
@@ -37,13 +39,14 @@ Hooks.once('init', async function() {
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = MyttActorProxy;
-  CONFIG.Item.documentClass = SystemItem;
+  CONFIG.Item.documentClass = MyttItemProxy;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("mytt", CharacterSheet, { /*types: ["character"],*/ makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("mytt", SystemItemSheet, { makeDefault: true });
+  Items.registerSheet("mytt", WeaponSheet, { types: ["weapon"] });
+  Items.registerSheet("mytt", AncestrySheet, { types: ["ancestry"] });
 
   console.warn("Resigtration complete", Actors)
 
@@ -55,20 +58,7 @@ Hooks.once('init', async function() {
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function() {
-  var outStr = '';
-  for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
-      outStr += arguments[arg];
-    }
-  }
-  return outStr;
-});
-
-Handlebars.registerHelper('toLowerCase', function(str) {
-  return str.toLowerCase();
-});
+registerHandlebarsHelpers();
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */

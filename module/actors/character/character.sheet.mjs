@@ -59,7 +59,7 @@ export class CharacterSheet extends MyttActorSheet {
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate);
+    html.find('.item-create').click(this._onItemCreate.bind(this));
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
@@ -69,13 +69,13 @@ export class CharacterSheet extends MyttActorSheet {
       li.slideUp(200, () => this.render(false));
     });
 
-    html.find('.inline-edit').change(this._onItemEdit);
+    html.find('.inline-edit').change(this._onItemEdit.bind(this));
 
-    html.find('.stat-add').click(this._onStatAdd)
+    html.find('.stat-add').click(this._onStatAdd.bind(this))
 
-    html.find('.rollable.stat-roll').click(this._onStatRoll)
+    html.find('.rollable.stat-roll').click(this._onStatRoll.bind(this))
 
-    html.find('.rollable.item-roll').click(this._onItemRoll)
+    html.find('.rollable.item-roll').click(this._onItemRoll.bind(this))
   }
 
   /**
@@ -145,6 +145,6 @@ export class CharacterSheet extends MyttActorSheet {
     const itemId = element.closest('li.item').dataset["itemId"];
     const item = this.actor.items.get(itemId);
     const target = game.user.targets.values().next()?.value;
-    AllItems.rollItem(item, { target });
+    item.roll({ target });
   }
 }
