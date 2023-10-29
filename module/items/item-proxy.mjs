@@ -1,11 +1,13 @@
-import { Ancestry } from "./ancestry/ancestry.data.mjs";
 import { MyttItem } from "./item.mjs";
+import { Ancestry } from "./ancestry/ancestry.data.mjs";
+import { Proficiency } from "./proficiency/proficiency.data.mjs";
 import { Weapon } from "./weapon/weapon.data.mjs";
 
 //Provide a type string to class object mapping to keep our code clean
 const itemMapping = {
   ancestry: Ancestry,
   weapon: Weapon,
+  proficiency: Proficiency,
 };
 
 export const MyttItemProxy = new Proxy(function () {}, {

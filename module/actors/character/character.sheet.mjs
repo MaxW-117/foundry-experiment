@@ -1,5 +1,5 @@
 import { MyttActorSheet } from '../actor-sheet.mjs'
-import { RollHelper } from '../../helpers/rolls/roll-helper.mjs'
+import { RollCheck } from '../../helpers/roll-check.mjs';
 
 export class CharacterSheet extends MyttActorSheet {
   getData() {
@@ -133,7 +133,9 @@ export class CharacterSheet extends MyttActorSheet {
       owner: this.actor.id,
       stat: CONFIG.MYTT.stats[stat],
     }
-    const r = await RollHelper.statRoll(this.actor.getRollData(), stat)
+    const modifiers = this.getStatModifiers(stat);
+    const [min, max] = RollCheck.evaluateRange(modifiers);
+    const r = new RollCheck({min, max, actor: this.actor, player: this.player})
     const results = await r.evaluate();
     cardData.roll = results;
     cardData.content = await renderTemplate(CONFIG.MYTT.templates.statRollCard, cardData);
@@ -147,5 +149,25 @@ export class CharacterSheet extends MyttActorSheet {
     const item = this.actor.items.get(itemId);
     const target = game.user.targets.values().next()?.value;
     item.roll({ target });
+  }
+
+  getStatModifiers(stat) {
+    return [
+      {
+        type: 'minBase',
+        value: 1,
+        name: 'Minimum Base',
+      },
+      {
+        type: 'maxBase',
+        value: 20,
+        name: 'Maximum Base',
+      },
+      {
+        type: "maxMultiplier",
+        value: 1 + (0.1 * this.actor.system.stats[stat].value),
+        name: stat,
+      }
+    ];
   }
 }

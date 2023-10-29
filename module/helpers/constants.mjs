@@ -53,9 +53,3 @@ export const stats = {
     "description":""
   },
 };
-
-export const proficiencyTemplate = {
-  name: "",
-  level: 0,
-  progress: 0,
-}

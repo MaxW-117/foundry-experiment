@@ -80,7 +80,8 @@
       "weapon",
       "skill",
       "ancestry",
-      "class"
+      "class",
+      "proficiency"
     ],
     "templates": {
       "base": {
@@ -149,6 +150,16 @@
         "base", "statful"
       ],
       "level":1
+    },
+    "proficiency": {
+      "templates":["base"],
+      "key": "",
+      "name": "",
+      "category": "",
+      "subcategory": "",
+      "specificity": 1,
+      "level": 1,
+      "progress": 0
     }
   }
 }

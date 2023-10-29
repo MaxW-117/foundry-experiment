@@ -1,8 +1,8 @@
-import { criticalFailureProficiencyIncrement, criticalFailureThresholdFor, criticalSuccessThresholdFor, failureProficiencyIncrement } from "../balancing-controls.mjs";
-import { incrementProficiencies } from "../proficiency-manager.mjs";
+import { criticalFailureProficiencyIncrement, criticalFailureThresholdFor, criticalSuccessThresholdFor, failureProficiencyIncrement } from "./balancing-controls.mjs";
+import { ProficiencyManager } from "../items/proficiency/proficiency-manager.mjs";
 
 export class RollCheck {
-  constructor({min, max, dc, actor, proficiencies}) {
+  constructor({ min, max, dc, actor, proficiencies }) {
     this.min = min;
     this.max = max;
     this.dc = dc;
@@ -52,12 +52,12 @@ export class RollCheck {
       console.log('skipping proficiency boosts')
     } else {
       if (this.criticalFailure) {
-        incrementProficiencies(this.actor, this.proficiencies, criticalFailureProficiencyIncrement)
+        ProficiencyManager.incrementProficiencies(this.actor, this.proficiencies, criticalFailureProficiencyIncrement)
       } else if (this.failure) {
-        incrementProficiencies(this.actor, this.proficiencies, failureProficiencyIncrement)
+        ProficiencyManager.incrementProficiencies(this.actor, this.proficiencies, failureProficiencyIncrement)
       }
     }
-    return { 
+    return {
       ...this._baseRoll,
       ...this.evaluated,
       ...this,
@@ -73,12 +73,12 @@ export class RollCheck {
   }
 
   static evaluateRange(rangeModifiers) {
-      const minBase = rangeModifiers.filter(m => m.type === "minBase").sum('value');
-      const maxBase = rangeModifiers.filter(m => m.type === "maxBase").sum('value');
-      const minAssurance = rangeModifiers.filter(m => m.type === "minAssurance").sum('value');
-      const maxMult = rangeModifiers.filter(m => m.type === "maxMultiplier").sum('value');
-      const max = Math.floor(maxBase * maxMult)
-      const min = Math.floor(minBase + (max-minBase) * minAssurance)
-      return [min, max]
+    const minBase = rangeModifiers.filter(m => m.type === "minBase").sum('value');
+    const maxBase = rangeModifiers.filter(m => m.type === "maxBase").sum('value');
+    const minAssurance = rangeModifiers.filter(m => m.type === "minAssurance").sum('value');
+    const maxMult = rangeModifiers.filter(m => m.type === "maxMultiplier").sum('value');
+    const max = Math.floor(maxBase * maxMult)
+    const min = Math.floor(minBase + (max - minBase) * minAssurance)
+    return [min, max]
   }
 }

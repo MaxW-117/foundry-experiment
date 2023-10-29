@@ -1,18 +1,18 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Proficiency</th>
-      <th>Level</th>
       <th>Progress</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    {{#each system.proficiencies}}
+    {{#each system.proficiency}}
     <tr>
       <td>{{this.name}}</td>
-      <td>{{this.level}}</td>
-      <td>{{this.progress}}</td>
+      <td title="Level {{this.system.level}}">{{this.system.rank}}</td>
+      <td title="{{this.system.progressRemaining}} EXP to level">{{this.system.progress}}/{{this.system.progressNeededTotal}}</td>
       <td>ACTIONS HERE</td>
     </tr>
     {{/each}}

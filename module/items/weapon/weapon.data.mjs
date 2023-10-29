@@ -1,6 +1,8 @@
 import { extrapolateStatMultiplier } from "../../helpers/utils.mjs";
-import { RollCheck } from "../../helpers/rolls/roll-check.mjs";
+import { RollCheck } from "../../helpers/roll-check.mjs";
 import { MyttItem } from "../item.mjs";
+import { ProficiencyManager } from "../proficiency/proficiency-manager.mjs";
+import { getProficiencyModifier } from "../../helpers/balancing-controls.mjs";
 
 export class Weapon extends MyttItem {
     // ============================= PREP DATA ==================================
@@ -50,7 +52,7 @@ export class Weapon extends MyttItem {
 
     evaluateAttackRange() {
       const item = this.system;
-      const actor = this.actor?.system;
+      const actor = this.actor;
       item.attackRollRangeModifiers = [
         {
           type: 'minBase',
@@ -64,15 +66,19 @@ export class Weapon extends MyttItem {
         }
       ];
       if (actor) {
+        const actorData = this.actor.system;
         const proficiencies = ['weapon-group-'+item.group, 'weapon-category-'+item.category, 'weapon-type-'+item.type];
-        const profMods = proficiencies.map((p) => {
-          return {
-            type: 'minAssurance',
-            value: actor.proficiencies[p]?.value || 0,
-            name: actor.proficiencies[p]?.name || p,
-          }
-        });
-        const statValue = actor.stats[item.attackStat].value || 0;
+        const profMods = proficiencies
+          .map((p) => ProficiencyManager.getProficiency(actor, p))
+          .filter((p) => p)
+          .map(p => {
+            return {
+              type: 'minAssurance',
+              value: getProficiencyModifier(p),
+              name: p.name,
+            }
+          });
+        const statValue = actorData.stats[item.attackStat].value || 0;
         const statMod = {
           type: 'maxMultiplier',
           value: extrapolateStatMultiplier(item.attackStat, statValue),
